@@ -53,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40697673" vertical-offset="0" max-vertical-offset="516">
+            <state vertical-scroll-proportion="-6.774194" vertical-offset="0" max-vertical-offset="480">
               <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
               <folding />
             </state>
@@ -65,6 +65,19 @@
             <state />
           </provider>
           <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mysql.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mysql.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6511628" vertical-offset="654" max-vertical-offset="1170">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
             <state />
           </provider>
         </entry>
@@ -140,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/test/java/com/github/justplay1994/ssmframework/Login.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/github/justplay1994/ssmframework/MyRealm.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/mysql.sql" />
       </list>
     </option>
   </component>
@@ -969,12 +983,12 @@
       <workItem from="1493212691947" duration="260000" />
       <workItem from="1493212969866" duration="617000" />
       <workItem from="1493867351491" duration="1388000" />
-      <workItem from="1494831801915" duration="4557000" />
+      <workItem from="1494831801915" duration="5175000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50957000" />
+    <option name="totallyTimeSpent" value="51575000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="431" y="20" width="1552" height="987" extended-state="0" />
@@ -1390,17 +1404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mysql.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9302325" vertical-offset="830" max-vertical-offset="1260">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.72" vertical-offset="1692" max-vertical-offset="3000">
@@ -1449,7 +1452,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40697673" vertical-offset="0" max-vertical-offset="516">
+        <state vertical-scroll-proportion="-6.774194" vertical-offset="0" max-vertical-offset="480">
           <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding />
         </state>
@@ -1458,6 +1461,17 @@
         <state />
       </provider>
       <provider editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6511628" vertical-offset="654" max-vertical-offset="1170">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
     </entry>

@@ -31,6 +31,3 @@ CREATE TABLE `dailylog` (
 INSERT INTO `dailylog` VALUES ('1', '内容1');
 INSERT INTO `dailylog` VALUES ('2', '内容2');
 INSERT INTO `dailylog` VALUES ('3', '今天天气下雨');
-INSERT INTO `dailylog` VALUES ('4', '������������');
-INSERT INTO `dailylog` VALUES ('5', '������������');
-INSERT INTO `dailylog` VALUES ('6', '������������');
