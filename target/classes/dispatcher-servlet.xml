@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 自动扫描标签,controller,service-->
+    <context:component-scan base-package="github.com.justplay1994.ssmframework.web.controller"/>
+    <context:component-scan base-package="github.com.justplay1994.ssmframework.web.service.*"/>
+    <!-- 激活注解，如@controller-->
+    <mvc:annotation-driven/>
+    <!-- 静态资源映射-->
+    <!--静态网页映射-->
+    <mvc:resources mapping="/view/**" location="/WEB-INF/view/"/>
+    <!--其他资源映射-->
+    <mvc:resources mapping="/assets/**" location="/WEB-INF/assets/"/>
+</beans>
