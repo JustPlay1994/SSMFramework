@@ -19,6 +19,6 @@
         </environment>
     </environments>
     <mappers>
-        <package name="github.com.justplay1994.ssmframework.web.dao"/>
+        <package name="com.github.justplay1994.ssmframework.web.dao"/>
     </mappers>
 </configuration>

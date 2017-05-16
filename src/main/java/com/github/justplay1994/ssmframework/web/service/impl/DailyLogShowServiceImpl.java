@@ -22,8 +22,8 @@ import java.io.InputStream;
 @Service()
 public class DailyLogShowServiceImpl implements DailyLogShowService {
     /**
-     * ����sqlSession��ʹ�ú����close�������ڴ�й©
-     * @return sql����
+     *
+     * @return SqlSession
      */
     private SqlSession createSqlSession(){
         String resource= "mybatisConfig.xml";
@@ -37,10 +37,7 @@ public class DailyLogShowServiceImpl implements DailyLogShowService {
         return sqlSessionFactory.openSession();
     }
 
-    /**
-     *  ����������־��������
-     * @return ��־��DailyLog
-     */
+
     @Autowired
     public DailyLog getDailyLog() {
         SqlSession sqlSession=createSqlSession();
@@ -55,10 +52,7 @@ public class DailyLogShowServiceImpl implements DailyLogShowService {
         }
     }
 
-    /**
-     * ������־����
-     * @return �ַ���
-     */
+
     @Autowired
     public String getContent() {
         SqlSession sqlSession=createSqlSession();
@@ -73,10 +67,7 @@ public class DailyLogShowServiceImpl implements DailyLogShowService {
         }
     }
 
-    /**
-     * ����־���ݴ������ݿ�
-     * @param content
-     */
+
 
     public void setDailyLog(String content){
         SqlSession sqlSession=createSqlSession();

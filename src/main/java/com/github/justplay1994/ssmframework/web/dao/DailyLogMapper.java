@@ -8,20 +8,11 @@ import com.github.justplay1994.ssmframework.web.model.DailyLog;
  */
 
 public interface DailyLogMapper {
-    /**
-     *  ����������־��������
-     * @return ��־��DailyLog
-     */
+
     DailyLog getDailyLog();
-    /**
-     * ������־����
-     * @return �ַ���
-     */
+
     String getContent();
-    /**
-     * ����־���ݴ������ݿ�
-     * @param content
-     */
+
     void setDailyLog(String content);
 
 }

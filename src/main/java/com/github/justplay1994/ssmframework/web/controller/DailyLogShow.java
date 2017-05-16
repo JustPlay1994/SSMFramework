@@ -4,12 +4,18 @@ package com.github.justplay1994.ssmframework.web.controller;
 //import org.apache.log4j.Logger;
         import com.github.justplay1994.ssmframework.web.service.DailyLogShowService;
         import com.github.justplay1994.ssmframework.web.model.DailyLog;
+
+        import org.apache.log4j.LogManager;
+        import org.apache.log4j.Logger;
         import org.junit.Test;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.beans.factory.annotation.Qualifier;
         import org.springframework.stereotype.Component;
         import org.springframework.stereotype.Controller;
+        import org.springframework.web.bind.annotation.RequestBody;
         import org.springframework.web.bind.annotation.RequestMapping;
+        import org.springframework.web.bind.annotation.RequestMethod;
+        import org.springframework.web.bind.annotation.ResponseBody;
 
         import java.nio.charset.Charset;
 
@@ -21,16 +27,23 @@ package com.github.justplay1994.ssmframework.web.controller;
 @Controller
 @Component
 public class DailyLogShow {
-    //    public  static Logger logger = LogManager.getLogger(SayHello.class);
+    Logger logger = LogManager.getLogger(DailyLogShow.class);
 //    DailyLogShowService dailyLogShowService = new DailyLogShowServiceImpl();
+
+
     @Autowired @Qualifier("dailyLogShowServiceImpl")
     DailyLogShowService dailyLogShowService;
-    @RequestMapping(value = "/get")
-    public void getDailyLog(String message){
+    @RequestMapping(value = "/get", method = RequestMethod.POST,consumes = "application/json;charset=utf-8", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public String getDailyLog(@RequestBody String message){
 //        System.out.println(message);
-        System.out.println(dailyLogShowService.getContent());
+        System.out.println("编码格式为: "+System.getProperty("file.encoding"));
+        System.out.println("message: "+message);
+        logger.info(dailyLogShowService.getContent());
+        System.out.println("System.out + "+"中文："+dailyLogShowService.getContent());
         DailyLog dailyLog = dailyLogShowService.getDailyLog();
-        System.out.println(dailyLog);
+        logger.info(dailyLog);
+        return "{a:返回中文}";
     }
     @RequestMapping("/set")
     @Test
@@ -41,7 +54,6 @@ public class DailyLogShow {
         System.out.println(content.getBytes(Charset.forName("GBK")).length);
         System.out.println(content.getBytes(Charset.forName("UTF-8")).length);
         System.out.println(content.getBytes().length);
-
         dailyLogShowService.setDailyLog(content);
     }
 }

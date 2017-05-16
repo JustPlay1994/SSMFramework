@@ -6,8 +6,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!-- 自动扫描标签,controller,service-->
-    <context:component-scan base-package="github.com.justplay1994.ssmframework.web.controller"/>
-    <context:component-scan base-package="github.com.justplay1994.ssmframework.web.service.*"/>
+    <context:component-scan base-package="com.github.justplay1994.ssmframework.web.controller"/>
+    <context:component-scan base-package="com.github.justplay1994.ssmframework.web.service.*"/>
     <!-- 激活注解，如@controller-->
     <mvc:annotation-driven/>
     <!-- 静态资源映射-->

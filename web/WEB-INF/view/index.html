@@ -10,14 +10,16 @@
 <script>
     $.ajax({
         url:"/rest/get",
-        contentType:"json",
-        data:"",
-        dataType:"json",
-        error: function () {
-
+        type:"POST",
+        contentType:"application/json;charset=utf-8",
+        data:"{a:中文测试}",
+        dataType:"application/json;charset=utf-8",
+        error: function (e) {
+            console.log("error!");
+            console.log(e);
         },
-        success:function(){
-
+        success:function(data){
+            console.log(data.responseText);
         }
 
     });
