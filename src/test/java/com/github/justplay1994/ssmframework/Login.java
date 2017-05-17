@@ -77,7 +77,11 @@ public class Login {
         subject.logout();
     }
 
-
+    /**
+     * 得到一个Subject,后续用于验证token
+     * @param file
+     * @return
+     */
     public Subject getSubject(String file){
         //1、获取 SecurityManager 工厂，此处使用 Ini 配置文件初始化 SecurityManager
         Factory<org.apache.shiro.mgt.SecurityManager>factory =
@@ -90,6 +94,9 @@ public class Login {
         return subject;
     }
 
+    /**
+     * 判断角色
+     */
     @Test
     public void testHasRole(){
         String username = "hzz";
@@ -106,10 +113,13 @@ public class Login {
         Assert.assertEquals(true, subject.isAuthenticated()); //断言用户已经登录
         //判断拥有角色：role1
         Assert.assertTrue(subject.hasRole("role1"));
+        logger.info(subject.hasRole("role1"));
         //判断拥有角色：role1 and role2
         Assert.assertTrue(subject.hasAllRoles(Arrays.asList("role1", "role2")));
+        logger.info(subject.hasAllRoles(Arrays.asList("role1", "role2")));
         //判断拥有角色：role1 and role2 and !role3
         boolean[] result = subject.hasRoles(Arrays.asList("role1","role2","role3"));
+        logger.info(result[0]+ " "+ result[1]+" "+result[2]);
         Assert.assertEquals(true,result[0]);
         Assert.assertEquals(true,result[1]);
         Assert.assertEquals(false,result[2]);
@@ -167,4 +177,32 @@ public class Login {
 
     }//method
 
+    /**
+     * 判断权限
+     */
+    @Test
+    public void testRight(){
+        String username = "hzz";
+        String password = "123";
+        Subject subject = getSubject("classpath:shiro.ini");
+        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+        try {
+            //4、登录，即身份验证
+            subject.login(token);
+        }catch (AuthenticationException e1){
+            logger.error(e1);
+        }
+        //判断拥有权限： user:create
+        Assert.assertTrue(subject.isPermitted("user:create"));
+        logger.info(subject.isPermitted("user:create"));
+        //判断拥有权限： user:update and user:delete
+        Assert.assertTrue(subject.isPermittedAll("user:update","user:delete"));
+        logger.info(subject.isPermittedAll("user:update","user:delete"));
+        //判断没有权限： user:view
+        Assert.assertFalse(subject.isPermitted("user:view"));
+        logger.info(subject.isPermitted("user:view"));
+
+
+        subject.logout();
+    }
 }
