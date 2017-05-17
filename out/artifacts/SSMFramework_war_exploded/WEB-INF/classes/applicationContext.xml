@@ -10,9 +10,26 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<!-- 引入dispatcher配置文件-->
-<import resource="dispatcher-servlet.xml"/>
+    <!-- 引入dispatcher配置文件-->
+    <import resource="dispatcher-servlet.xml"/>
 
-<!-- 引入mybatis配置文件-->
-<!--<import resource="spring-mybatis.xml"/>-->
+    <!-- 引入mybatis配置文件-->
+    <!--<import resource="spring-mybatis.xml"/>-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+<!--解决乱码-->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <constructor-arg>
+                        <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+                            <property name="targetClass" value="java.nio.charset.Charset"/>
+                            <property name="targetMethod" value="forName"/>
+                            <property name="arguments" value="UTF-8"/>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+    </bean>
 </beans>

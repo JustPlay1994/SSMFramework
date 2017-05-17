@@ -33,17 +33,17 @@ public class DailyLogShow {
 
     @Autowired @Qualifier("dailyLogShowServiceImpl")
     DailyLogShowService dailyLogShowService;
-    @RequestMapping(value = "/get", method = RequestMethod.POST,consumes = "application/json;charset=utf-8", produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/get", method = RequestMethod.POST,consumes="application/json;charset=UTF-8", produces="application/json;charset=UTF-8")
     @ResponseBody
     public String getDailyLog(@RequestBody String message){
-//        System.out.println(message);
+
         System.out.println("编码格式为: "+System.getProperty("file.encoding"));
         System.out.println("message: "+message);
         logger.info(dailyLogShowService.getContent());
         System.out.println("System.out + "+"中文："+dailyLogShowService.getContent());
         DailyLog dailyLog = dailyLogShowService.getDailyLog();
         logger.info(dailyLog);
-        return "{a:返回中文}";
+        return "{\"a\":\"返回中文\"}";
     }
     @RequestMapping("/set")
     @Test

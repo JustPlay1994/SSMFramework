@@ -8,20 +8,23 @@
 <body>
     text
 <script>
+    var a = {a:"前端中文"};
     $.ajax({
         url:"/rest/get",
         type:"POST",
         contentType:"application/json;charset=utf-8",
-        data:"{a:中文测试}",
-        dataType:"application/json;charset=utf-8",
-        error: function (e) {
-            console.log("error!");
-            console.log(e);
-        },
+        data:JSON.stringify(a),
+        dataType:"json",
         success:function(data){
-            console.log(data.responseText);
+            console.log("success!");
+            console.log(data);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest.status);
+            console.log(XMLHttpRequest.readyState);
+            console.log(textStatus);
+            console.log(errorThrown);
         }
-
     });
 </script>
 </body>
