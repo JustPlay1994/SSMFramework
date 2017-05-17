@@ -8,6 +8,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.junit.Assert;
@@ -24,6 +25,9 @@ import java.util.Arrays;
 public class Login {
     Logger logger = LogManager.getLogger(Login.class);
 
+    /**
+     * 认证过程, 使用shiro.ini
+     */
     @Test
     public void testLogin1(){
         //1、获取 SecurityManager 工厂，此处使用 Ini 配置文件初始化 SecurityManager
@@ -47,6 +51,9 @@ public class Login {
         subject.logout();
     }
 
+    /**
+     * 认证过程, 使用shiro-realm.ini
+     */
     @Test
     public void testLogin2(){
         //1、获取 SecurityManager 工厂，此处使用 Ini 配置文件初始化 SecurityManager
@@ -71,7 +78,7 @@ public class Login {
     }
 
 
-    public Subject getSubject(String file,String username,String password){
+    public Subject getSubject(String file){
         //1、获取 SecurityManager 工厂，此处使用 Ini 配置文件初始化 SecurityManager
         Factory<org.apache.shiro.mgt.SecurityManager>factory =
                 new IniSecurityManagerFactory(file);
@@ -81,14 +88,13 @@ public class Login {
         //3、得到 Subject 及创建用户名/密码身份验证 Token（即用户身份/凭证）
         Subject subject = SecurityUtils.getSubject();
         return subject;
-
     }
 
     @Test
     public void testHasRole(){
         String username = "hzz";
         String password = "123";
-        Subject subject = getSubject("classpath:shiro.ini",username,password);
+        Subject subject = getSubject("classpath:shiro.ini");
         UsernamePasswordToken token = new UsernamePasswordToken(username,password);
         try {
             //4、登录，即身份验证
@@ -110,4 +116,55 @@ public class Login {
 
         subject.logout();
     }
+
+    /**
+     *  网上的认证过程, 使用shiro-realm.ini
+     */
+    @Test
+    public void testLoginAndLogout(){
+        //创建securityManager工厂，通过Ini配置文件创建securityManager工厂
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro-realm.ini");
+
+        //创建SecurityManager
+        SecurityManager sm = factory.getInstance();
+
+        //将securityManager设置到当前的环境中
+        SecurityUtils.setSecurityManager(sm);
+
+        //从SecurityUtils里面创建一个subject
+        Subject subject = SecurityUtils.getSubject();
+
+        //在认证提交前，需要准备token(令牌)
+        UsernamePasswordToken token = new UsernamePasswordToken("hzz", "123");
+
+        try {
+            //执行认证提交
+            subject.login(token);
+        } catch (AuthenticationException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        //是否认证通过
+        boolean isAuthenticated = subject.isAuthenticated();
+
+        System.out.println("是否认证通过：" + isAuthenticated);
+
+
+        //得到一个身份集合，其包含了 Realm 验证成功的身份信息
+        PrincipalCollection principalCollection = subject.getPrincipals();
+        Assert.assertEquals(2, principalCollection.asList().size());
+
+
+        //退出操作
+        subject.logout();
+
+        //是否认证通过
+        isAuthenticated = subject.isAuthenticated();
+
+        System.out.println("是否认证通过：" + isAuthenticated);
+
+
+    }//method
+
 }

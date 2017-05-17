@@ -12,7 +12,7 @@
     $.ajax({
         url:"/rest/get",
         type:"POST",
-        contentType:"application/json;charset=utf-8",
+        contentType:"application/json;charset=utf-8", //添加编码格式
         data:JSON.stringify(a),
         dataType:"json",
         success:function(data){
