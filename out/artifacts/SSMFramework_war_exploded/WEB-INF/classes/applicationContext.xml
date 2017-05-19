@@ -32,4 +32,8 @@
             </list>
         </property>
     </bean>
+    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+        <!--<property name="securityManager" ref="securityManager"/>-->
+        <!--&lt;!&ndash;<!—忽略其他，详见与 Spring 集成部分 &ndash;&gt;&ndash;&gt;-->
+    <!--</bean>-->
 </beans>
